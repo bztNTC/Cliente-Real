@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% set languagesEnum = enum('App\\Entity\\Enum\\LanguageEnum') %}
-{% block title %}Propriedades dos Produtos
+{% block title %}Listagem de Categorias de Notícias
 {% endblock %}
 
 {% block javascripts %}
@@ -52,12 +52,12 @@ $('#tabela').DataTable({
 
 	<div class="row text-end">
 		<div class="col">
-			<a class="btn btn-success rounded-pill text-white mb-3" href="{{ path('app_admin_product_property_new') }}">Novo</a>
+			<a class="btn btn-success rounded-pill text-white mb-3" href="{{ path('app_admin_news_category_new') }}">Novo</a>
 		</div>
 	</div>
 
 	<div class="card mb-5">
-		<h1 class="card-header">Propriedades dos Produtos</h1>
+		<h1 class="card-header">Categorias de Notícias</h1>
 		<div class="card-body">
 			<table class="table" id="tabela">
 				<thead>
@@ -68,13 +68,12 @@ $('#tabela').DataTable({
 					</tr>
 				</thead>
 				<tbody>
-					{% for product_property in product_properties %}
+					{% for news_category in news_categories %}
 						<tr>
-							<td>{{ product_property.title }}</td>
-							<td>{{ languagesEnum.getFlag(product_property.language)|raw }}
-							</td>
+							<td>{{ news_category.title }}</td>
+							<td>{{ languagesEnum.getFlag(news_category.language)|raw }}</td>
 							<td>
-								<a class="btn btn-secondary rounded-pill float-end" href="{{ path('app_admin_product_property_edit', {'id': product_property.id}) }}">Editar</a>
+								<a class="btn btn-secondary rounded-pill float-end" href="{{ path('app_admin_news_category_edit', {'id': news_category.id}) }}">Editar</a>
 							</td>
 						</tr>
 					{% else %}

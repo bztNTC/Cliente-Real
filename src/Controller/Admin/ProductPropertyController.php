@@ -71,7 +71,7 @@ class ProductPropertyController extends AbstractController
     #[Route('/{id}', name: 'app_admin_product_property_delete', methods: ['POST'])]
     public function delete(Request $request, ProductProperty $productProperty, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$productProperty->getId(), $request->getPayload()->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $productProperty->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($productProperty);
             $entityManager->flush();
         }
